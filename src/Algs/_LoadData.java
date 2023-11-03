@@ -6,16 +6,42 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.lang.Math;
 
 public class _LoadData {
+	public static int count;
 
 	public static void main(String[] args) {
+		count = 0;
+		int n = 12;
 		// List<String> l = readFileInList("E:\\JAVA\\test_data\\data_gen-40.csv");
-		List<String> l = randomList(10, -500, 1200);
+		List<String> l = randomList(n, -500, 1200);
 		Print("input > ", l);// print input
-		//l = SelectionSort.Sort(l);// sort
-		l = InsertionSort.Sort(l);
+		//l = SelectionSort.sort(l);
+		//l = InsertionSort.sort(l);
+		//l = ShellSort.sort(l);
+		l = HeapSort.heap(l);
 		Print("sorted> ", l);// print output
+		Stats(n);
+		HeapSort.printHeap(l);
+		//System.out.println(String.format("%1$" + 5 + "s", "abv").replace(' ', '_'));
+	}
+
+	public static void Stats(int n) {
+		String out = "count: " + count + "; ";
+		double log_n = (Math.log(n) / Math.log(2));
+		int nlog_n = n * (int) log_n;
+		int nsum_n_1 = n * (n + 1) / 2;
+		int n2 = n * n;
+		int n3 = n * n * n;
+		out += "n = " + n + "; ";
+		out += "log(n) = " + log_n + "; ";
+		out += "nlog(n) = " + nlog_n + "; ";
+		out += "n^2/~2 = " + nsum_n_1 + "; ";
+		out += "n^2 = " + n2 + "; ";
+		out += "n^3 = " + n3;
+		System.out.println(out);
+		count = 0;
 	}
 
 	public static void Print(String txt, List<String> l) {
