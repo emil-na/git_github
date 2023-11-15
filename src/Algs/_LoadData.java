@@ -9,34 +9,39 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.lang.Math;
 
 public class _LoadData {
+	// public static int digits = 5;
 	public static int count;
 
 	public static void main(String[] args) {
 		count = 0;
-		int n = 12;
+		int n = 7;
 		// List<String> l = readFileInList("E:\\JAVA\\test_data\\data_gen-40.csv");
 		List<String> l = randomList(n, -500, 1200);
 		Print("input > ", l);// print input
-		//l = SelectionSort.sort(l);
-		//l = InsertionSort.sort(l);
-		//l = ShellSort.sort(l);
-		l = HeapSort.heap(l);
-		Print("sorted> ", l);// print output
-		Stats(n);
-		HeapSort.printHeap(l);
-		//System.out.println(String.format("%1$" + 5 + "s", "abv").replace(' ', '_'));
+		// l = SelectionSort.sort(l);
+		// l = InsertionSort.sort(l);
+		// l = ShellSort.sort(l);
+		l = Heap.minHeap_build(l);
+		Stats("build heap", n);
+		l = Heap.sortHeap_desc(l);
+		Print("sorted > ", l);// print output
+		Heap.printHeap(l);
+		Stats("sort heap", n);
+		// System.out.println(String.format("%1$" + 5 + "s", "abv").replace(' ', '_'));
 	}
 
-	public static void Stats(int n) {
-		String out = "count: " + count + "; ";
+	public static void Stats(String msg, int n) {
+		String out = msg + " > count: " + count + "; ";
 		double log_n = (Math.log(n) / Math.log(2));
-		int nlog_n = n * (int) log_n;
+		log_n = Math.round(log_n * 1000);
+		log_n /= 1000;
+		double nlog_n = n * log_n;
 		int nsum_n_1 = n * (n + 1) / 2;
 		int n2 = n * n;
 		int n3 = n * n * n;
 		out += "n = " + n + "; ";
 		out += "log(n) = " + log_n + "; ";
-		out += "nlog(n) = " + nlog_n + "; ";
+		out += "n*log(n) = " + (int) nlog_n + "; ";
 		out += "n^2/~2 = " + nsum_n_1 + "; ";
 		out += "n^2 = " + n2 + "; ";
 		out += "n^3 = " + n3;
