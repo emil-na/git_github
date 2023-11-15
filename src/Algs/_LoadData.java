@@ -21,13 +21,13 @@ public class _LoadData {
 		// l = SelectionSort.sort(l);
 		// l = InsertionSort.sort(l);
 		// l = ShellSort.sort(l);
-		l = Heap.minHeap_build(l);
-		Stats("build heap", n);
-		l = Heap.sortHeap_desc(l);
-		Print("sorted > ", l);// print output
-		Heap.printHeap(l);
-		Stats("sort heap", n);
-		// System.out.println(String.format("%1$" + 5 + "s", "abv").replace(' ', '_'));
+		// l = Heap.minHeap_build(l);
+		// Stats("build heap", n);
+		// l = Heap.sortHeap_desc(l);
+		// Print("sorted > ", l);// print output
+		// Heap.printHeap(l);
+		// Stats("sort heap", n);
+		MergeSort.sort(l);
 	}
 
 	public static void Stats(String msg, int n) {
