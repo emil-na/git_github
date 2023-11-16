@@ -25,23 +25,24 @@ public class MergeSort {
 			sub_sort_recursive(l, start, end, sub);
 		}
 		if (sub > 2) { // merge larger arrays
-			sub_merge_recursive(l, sub, parts, last);
+			sub_merge_recursive(l, 0, 0, sub, parts, last);
 		}
 		if (sub * 2 < l.size())
 			btmUp(l, sub * 2); // keep recursion call at the end
 	}
 
-	private static void sub_merge_recursive(List<String> l, int sub, int parts, int last) {
-
+	private static void sub_merge_recursive(List<String> l, int start, int start2, int sub, int parts, int last) {
+		if (parts == 2) { // no recursion
+			sub_merge(l, 0, sub, l.size() - 1);
+		} else {
+			// conditions to call a recursion
+			
+		}
 	}
 
-	private static void sub_merge(List<String> l, int start, int sub) {
-		int start2 = (start + sub), end;
-		if (start2 + sub <= l.size())
-			end = start2 + sub;
-		else
-			end = l.size() - 1;
+	private static void sub_merge(List<String> l, int start, int start2, int end) {
 		System.out.println("start: " + start + ", start2: " + start2 + ", end: " + end);
+		// parallel loop to compare/swap sub1 & sub2 values
 	}
 
 	private static void sub_sort_recursive(List<String> l, int start, int end, int sub) {
