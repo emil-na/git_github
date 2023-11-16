@@ -14,10 +14,10 @@ public class _LoadData {
 
 	public static void main(String[] args) {
 		count = 0;
-		int n = 7;
+		int n = 10;
 		// List<String> l = readFileInList("E:\\JAVA\\test_data\\data_gen-40.csv");
 		List<String> l = randomList(n, -500, 1200);
-		Print("input > ", l);// print input
+		Print("input  > ", l);// print input
 		// l = SelectionSort.sort(l);
 		// l = InsertionSort.sort(l);
 		// l = ShellSort.sort(l);
@@ -28,6 +28,7 @@ public class _LoadData {
 		// Heap.printHeap(l);
 		// Stats("sort heap", n);
 		MergeSort.sort(l);
+		Print("output > ", l);// print input
 	}
 
 	public static void Stats(String msg, int n) {
