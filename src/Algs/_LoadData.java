@@ -14,7 +14,7 @@ public class _LoadData {
 
 	public static void main(String[] args) {
 		count = 0;
-		int n = 10;
+		int n = 7;
 		// List<String> l = readFileInList("E:\\JAVA\\test_data\\data_gen-40.csv");
 		List<String> l = randomList(n, -500, 1200);
 		Print("input  > ", l);// print input
