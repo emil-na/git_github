@@ -1,14 +1,17 @@
 package Algs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MergeSort {
 	private static int call;
+	private static List<String> l1 = new ArrayList<String>();
 
 	public static List<String> sort(List<String> l) {
+		l1.addAll(l); // need the same size array
 		// btmUp_print(l, 2);
 		btmUp(l, 2); // pass smallest sub array size(2) for recursion
-		return l;
+		return l1;
 	}
 
 	private static void btmUp(List<String> l, int sub) {
@@ -21,7 +24,7 @@ public class MergeSort {
 			int start = 0, end = sub - 1; // 1
 			sub_sort_recursive(l, start, end, sub);
 		}
-		if (sub > 2) { // merge larger arrays
+		if (sub >= 2) { // merge larger arrays
 			sub_merge_recursive(l, 0, sub, parts);
 		}
 		if (sub * 2 < l.size())
@@ -43,22 +46,37 @@ public class MergeSort {
 
 	private static void sub_merge(List<String> l, int s1, int e1, int s2, int e2) {
 		int sz1 = s2 - s1, sz2 = e2 - e1;
-		String out = "paralel> ";
 		System.out.println("PARTS: [" + s1 + "-" + e1 + "](" + sz1 + "), [" + s2 + "-" + e2 + "](" + sz2 + ")");
-		// parallel loop to compare/swap sub1 & sub2 values
-		// rework it !!!
-		for (int i = s1; i < sz1; i++) {
-			out += l.get(i) + ", ";
-			if (i < sz2) {
-				out += l.get(i + sz1) + ", ";
-				swap(l, i, i + sz1);
+		// print_sub(l, s1, sz1);
+		// print_sub(l, s2, sz2);
+		int i = s1, j = s2, k = 0; // double traverse loop
+		while (i < s1 + sz1 && j < s2 + sz2) {
+			if (Integer.parseInt(l.get(i)) < Integer.parseInt(l.get(j))) {
+				l1.set(k++, l.get(i++));
+			} else {
+				l1.set(k++, l.get(j++));
 			}
 		}
-		// System.out.println(out);
+
+		while (i < s1 + sz1) {
+			l1.set(k++, l.get(i++));
+		}
+		while (j < s2 + sz2) {
+			l1.set(k++, l.get(j++));
+		}
+		_LoadData.Print("sorting: ", l);
+	}
+
+	private static void print_sub(List<String> l, int s, int sz) {
+		String out = "sub: ";
+		for (int i = s; i < s + sz; i++) {
+			out += l.get(i) + ", ";
+		}
+		System.out.println(out);
 	}
 
 	private static void swap(List<String> l, int a, int b) {
-		int temp;
+		int temp; // swap size 2 sub arrays
 		if (Integer.parseInt(l.get(a)) > Integer.parseInt(l.get(b))) {
 			temp = Integer.parseInt(l.get(a));
 			l.set(a, l.get(b));
@@ -83,7 +101,7 @@ public class MergeSort {
 	}
 
 	private static void sub_sort(List<String> l, int start, int end) {
-		//int temp;
+		// int temp;
 		if (end - start == 1) { // sort only sub arrays size(2)
 			swap(l, start, end);
 			/*
