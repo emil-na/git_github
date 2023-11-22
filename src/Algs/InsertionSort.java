@@ -4,7 +4,7 @@ import java.util.List;
 
 public class InsertionSort {
 	public static List<String> sort(List<String> l) {
-		System.out.println("InsertionSort:");
+		System.out.println("InsertionSort:"); // n*(n+1)/2, 1+2+3+..n
 		String temp = "";
 		for (int i = 1; i < l.size(); i++) {
 			_LoadData.count++;

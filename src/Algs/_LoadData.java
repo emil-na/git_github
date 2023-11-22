@@ -27,8 +27,9 @@ public class _LoadData {
 		// Print("sorted > ", l);// print output
 		// Heap.printHeap(l);
 		// Stats("sort heap", n);
-		MergeSort.sort(l);
+		List<String> l1 = MergeSort.sort(l);
 		Print("output > ", l);// print input
+		Print("output1> ", l1);// print input
 	}
 
 	public static void Stats(String msg, int n) {
