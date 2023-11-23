@@ -14,7 +14,7 @@ public class _LoadData {
 
 	public static void main(String[] args) {
 		count = 0;
-		int n = 2;
+		int n = 6;
 		// List<String> l = readFileInList("E:\\JAVA\\test_data\\data_gen-40.csv");
 		List<String> l = randomList(n, -500, 1200);
 		Print("input  > ", l);// print input
@@ -30,8 +30,6 @@ public class _LoadData {
 		List<String> l1 = MergeSort2.sort(l);
 		//Print("output > ", l);
 		Print("output1> ", l1);
-		//l=l1;
-		//Print("output1> ", l);
 	}
 
 	public static void Stats(String msg, int n) {
