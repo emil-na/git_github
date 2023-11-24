@@ -28,7 +28,6 @@ public class _LoadData {
 		// Heap.printHeap(l);
 		// Stats("sort heap", n);
 		List<String> l1 = MergeSort2.sort(l);
-		//Print("output > ", l);
 		Print("output1> ", l1);
 	}
 
