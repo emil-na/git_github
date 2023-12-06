@@ -14,21 +14,15 @@ public class _LoadData {
 
 	public static void main(String[] args) {
 		count = 0;
-		int n = 14;
+		int n = 7;
 		// List<String> l = readFileInList("E:\\JAVA\\test_data\\data_gen-40.csv");
 		List<String> l = randomList(n, -500, 1200);
-		Print("input  > ", l);// print input
-		// l = SelectionSort.sort(l);
-		// l = InsertionSort.sort(l);
-		// l = ShellSort.sort(l);
-		// l = Heap.minHeap_build(l);
-		// Stats("build heap", n);
-		// l = Heap.sortHeap_desc(l);
-		// Print("sorted > ", l);// print output
-		// Heap.printHeap(l);
-		// Stats("sort heap", n);
-		List<String> l1 = MergeSort2.sort(l);
-		Print("output1> ", l1);
+		Print("input   > ", l);
+		//List<String> l1 = MergeSort2.sort(l);
+		//Print("output1> ", l1);
+		QuickSort.sort(l);
+		Print("output  > ", l);
+		Stats("sort", n);
 	}
 
 	public static void Stats(String msg, int n) {
@@ -40,8 +34,8 @@ public class _LoadData {
 		int nsum_n_1 = n * (n + 1) / 2;
 		int n2 = n * n;
 		int n3 = n * n * n;
-		out += "n = " + n + "; ";
 		out += "log(n) = " + log_n + "; ";
+		out += "n = " + n + "; ";
 		out += "n*log(n) = " + (int) nlog_n + "; ";
 		out += "n^2/~2 = " + nsum_n_1 + "; ";
 		out += "n^2 = " + n2 + "; ";

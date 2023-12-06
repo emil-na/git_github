@@ -53,6 +53,7 @@ public class MergeSort2 {
 	}
 
 	private static void mergeSort(List<String> l, int s1, int sz1, int s2, int sz2) {
+		_LoadData.count++;
 		// print_sub("before: ", l, s1, sz1, s2, sz2);
 		int i = s1, j = s2, k = s1; // double traverse loop
 		while (i < s1 + sz1 && j < s2 + sz2) {
