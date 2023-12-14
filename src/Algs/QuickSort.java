@@ -15,9 +15,9 @@ public class QuickSort {
 
 	private static List<String> quickSort(List<String> l, int s, int e) {
 		int p = pivot(l, s, e);
-		// int p = e - 1; // pivot is always the last
-		int i = -1, j = 0;
-		System.out.println("p: " + l.get(p) + "; s: " + s + "; e: " + e);
+		// print_sub("pivot: " + l.get(p) + " > ", l, s, e);
+		int i = s - 1, j = s;
+		// System.out.println("p: " + l.get(p) + "; s: " + s + "; e: " + e);
 		while (j < e) {
 			_LoadData.count++;
 			// if j > p: j++
@@ -35,16 +35,19 @@ public class QuickSort {
 			j++;
 		}
 		// recursion call
-		if (e - s > 1) {
-			quickSort(l, s, s + (e - s) / 2);
-			quickSort(l, s + (e - s) / 2, e);
+		int m = (e + s) / 2;
+		int le = e - s;
+		if (m > 0 && m != s) {
+			System.out.println("s, m, e: " + s + ", " + m + ", " + e);
+			quickSort(l, s, m);
+			quickSort(l, m, e);
 		}
 		return l;
 	}
 
 	private static int pivot(List<String> l, int s, int e) { // median of three
 		int p1 = s;
-		int p2 = (e - s) / 2;
+		int p2 = (e + s) / 2;
 		int p3 = e - 1;
 		if (Integer.parseInt(l.get(p1)) > Integer.parseInt(l.get(p2)))
 			swap(l, p1, p2);
@@ -61,5 +64,13 @@ public class QuickSort {
 		l.set(hi, l.get(lo));
 		l.set(lo, temp);
 		return true;
+	}
+
+	private static void print_sub(String msg, List<String> l, int s, int е) {
+		String out = msg;
+		for (int i = s; i < е; i++) {
+			out += l.get(i) + ", ";
+		}
+		System.out.println(out);
 	}
 }
