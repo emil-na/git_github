@@ -15,9 +15,8 @@ public class QuickSort {
 
 	private static List<String> quickSort(List<String> l, int s, int e) {
 		int p = pivot(l, s, e);
-		// print_sub("pivot: " + l.get(p) + " > ", l, s, e);
+		print_sub("pivot: " + l.get(p) + " > ", l, s, e);
 		int i = s - 1, j = s;
-		// System.out.println("p: " + l.get(p) + "; s: " + s + "; e: " + e);
 		while (j < e) {
 			_LoadData.count++;
 			// if j > p: j++
@@ -31,16 +30,17 @@ public class QuickSort {
 			// when j reach p: i++, swap i & p val
 			if (j == p) {
 				swap(l, ++i, p);
+				System.out.println("pivot: " + l.get(p) + ", swap: " + l.get(i) + ", " + l.get(p));
 			}
 			j++;
 		}
+		print_sub("pivot: " + l.get(p) + " > ", l, s, e);
 		// recursion call
 		int m = (e + s) / 2;
-		int le = e - s;
 		if (m > 0 && m != s) {
-			System.out.println("s, m, e: " + s + ", " + m + ", " + e);
-			quickSort(l, s, m);
-			quickSort(l, m, e);
+			// System.out.println("s, m, e: " + s + ", " + m + ", " + e);
+			// quickSort(l, s, m);
+			// quickSort(l, m, e);
 		}
 		return l;
 	}
